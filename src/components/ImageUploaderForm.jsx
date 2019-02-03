@@ -35,3 +35,16 @@
     // Make sure that function is called on handleSubmit in ImageUploaderForm!
 
 import React from 'react';
+
+class ImageUploaderForm extends React.Component {
+  render() {
+    return(
+      <div className='ImageUploaderForm'>
+        <input type="text" placeholder="Please type sth." />
+        <button>Upload</button>
+      </div>
+    )
+  }
+}
+
+export default ImageUploaderForm;

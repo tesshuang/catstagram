@@ -10,3 +10,24 @@
 	// iterate over the data and map each photo data to a FeedItem
 
 import React from 'react';
+import FeedItem from './FeedItem';
+
+class FeedList extends React.Component {
+	render() {
+		const photo = this.props.catData.photos;
+		// console.log(photo);
+		const passPhoto = photo.map((photo) => {
+			return (
+				<FeedItem 
+					key = {photo.id}
+					photo={photo}/>)
+		})
+		return(
+			<div>
+				{passPhoto}
+			</div>
+		)
+	}
+}
+
+export default FeedList;

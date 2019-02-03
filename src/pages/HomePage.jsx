@@ -16,4 +16,19 @@
     // and when the user submits, call that function with the user submitted url.
 
 import React from 'react';
-import data from '../../../data.json';
+import data from '../../data.json';
+import ImageUploaderForm from '../components/ImageUploaderForm';
+import FeedList from '../components/FeedList';
+
+class HomePage extends React.Component {
+	render() {
+		return (
+			<div className='Homepage'>
+				<ImageUploaderForm />
+				<FeedList catData = {data}/>
+		 </div>
+		)
+	}
+}
+
+export default HomePage;
