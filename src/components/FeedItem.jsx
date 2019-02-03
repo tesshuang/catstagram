@@ -16,13 +16,16 @@ import Likes from './Likes';
 
 
 class FeedItem extends React.Component {
+
 	render() {
 		console.log(this.props.photo);
-
 		return (
 			<div className='FeedItem'>
 				<img src={this.props.photo.url} alt='img'/>
-				<Likes likes={this.props.photo.likes}/>
+				<Likes 
+					likes={this.props.photo.likes}
+					userLiked = {this.props.photo.userLiked}
+					/>
 			</div>
 		)
 	}

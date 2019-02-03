@@ -24,21 +24,33 @@ class Likes extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			likes: true
+			likedstatus: this.props.userLiked,
+			likesNum: this.props.likes
 		}
 	}
 	likeHandler = () => {
 		this.setState({
-			likes: !this.state.likes
+			likedstatus: !this.state.likedstatus
 		})
+
+		this.counter();
 	}
-	
+	counter = () => {
+		if(this.state.likedstatus) {
+			this.setState({
+				likesNum: this.state.likesNum -1
+			})
+		} else {
+			this.setState({
+				likesNum: this.state.likesNum +1
+			})
+		}
+	}
 	render() {
-		
 		return (
 			<div className='Likes'>
-				<span>{this.props.likes}</span>
-				<button onClick={this.likeHandler}>{this.state.likes ? 'Liked' : 'Not Liked Yet'}</button>
+				<span>{this.state.likesNum}</span>
+				<button onClick={this.likeHandler}>{this.state.likedstatus ? 'Liked' : 'Not Liked Yet'}</button>
 			</div>
 		)
 	}
