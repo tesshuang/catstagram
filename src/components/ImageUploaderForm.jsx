@@ -26,7 +26,7 @@
     // All the data for the photos are located in HomePage -
     // so how do you get data from the user input of the ImageUploaderForm
     // to the HomePage component and update the photo data?
-    // First of all the, photo data in HomePage will be updating (somehow, more on that later).  As such, if
+    // First of all the, photo data in HomePage will be updating (somehow, more on that later). As such, if
     // data is going to change inside of a component, what should you put it in (hint: internal state!)
 
     // Then, how are you going to get the new photo url from ImageUploaderForm back to Homepage?
@@ -37,12 +37,43 @@
 import React from 'react';
 
 class ImageUploaderForm extends React.Component {
+  state = {
+    userURL:'',
+    userTitle: ''
+  }
+  handleChange = (e) => {
+    this.setState({
+      userURL: e.target.value
+    })
+  }
+  handleUrl = (e) => {
+    this.setState({
+      userTitle: e.target.value
+    })
+  }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(`userUrl ${this.state} photo ${this.props.catData.length}`);
+    let newdata = {
+      id: this.props.catData.length +1,
+      title: this.state.userTitle,
+      url: this.state.userURL,
+      likes: 0,
+      userLiked: false
+    }
+    this.props.handleAddPhoto(newdata);
+    this.setState({
+      userURL:'',
+      userTitle: ''
+    })
+  }
   render() {
     return(
-      <div className='ImageUploaderForm'>
-        <input type="text" placeholder="Please type sth." />
-        <button>Upload</button>
-      </div>
+      <form onSubmit={this.handleSubmit} className='ImageUploaderForm'>
+        <input type='text' placeholder='Your image title'value={this.state.userTitle} onChange={this.handleUrl}/>
+        <input type='url' placeholder='Please type image url' value={this.state.userURL}onChange={this.handleChange}/>
+        <button type='submit'>Upload</button>
+      </form>
     )
   }
 }

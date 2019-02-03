@@ -22,6 +22,7 @@ class FeedItem extends React.Component {
 		return (
 			<div className='FeedItem'>
 				<img src={this.props.photo.url} alt='img'/>
+				<p>{this.props.photo.title}</p>
 				<Likes 
 					likes={this.props.photo.likes}
 					userLiked = {this.props.photo.userLiked}

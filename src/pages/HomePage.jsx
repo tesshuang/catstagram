@@ -21,11 +21,31 @@ import ImageUploaderForm from '../components/ImageUploaderForm';
 import FeedList from '../components/FeedList';
 
 class HomePage extends React.Component {
+	state = {
+		catData: data.photos
+	}
+	handleAddPhoto = (url) => {
+		console.log('url', url);
+		// let photoobj = this.state.catData;
+		// photoobj.push(url);
+		// console.log(photoobj)
+		// this.setState({
+		// 	catData: photoobj,
+		// })
+		// ES6 spread operator 
+		this.setState({
+			catData: [url,
+			...this.state.catData]
+		})
+	}
 	render() {
+		// console.log(this.state.catData);
 		return (
 			<div className='Homepage'>
-				<ImageUploaderForm />
-				<FeedList catData = {data}/>
+				<ImageUploaderForm 
+				catData={this.state.catData}
+				handleAddPhoto={this.handleAddPhoto}/>
+				<FeedList catData={this.state.catData}/>
 		 </div>
 		)
 	}

@@ -13,9 +13,10 @@ import React from 'react';
 import FeedItem from './FeedItem';
 
 class FeedList extends React.Component {
+
 	render() {
-		const photo = this.props.catData.photos;
-		// console.log(photo);
+		const photo = this.props.catData;
+		console.log(photo);
 		const passPhoto = photo.map((photo) => {
 			return (
 				<FeedItem 
