@@ -16,14 +16,21 @@
 import React from 'react';
 import Header from './components/Header.jsx';
 import HomePage from './pages/HomePage.jsx';
+import { BrowserRouter, Route } from 'react-router-dom';
+import AboutPage from './pages/AboutPage';
+import ProfilePage from './pages/ProfilePage';
 
 class App extends React.Component {
 	render() {
 		return(
-			<div className='App'>
-				<Header />
-				<HomePage />
-			</div>
+			<BrowserRouter>
+				<div className='App'>
+					<Header />
+					<Route exact path='/' component={HomePage} />
+					<Route path='/about' component={AboutPage} />
+					<Route path='/profile' component={ProfilePage} />
+				</div>
+			</BrowserRouter>
 		)
 	}
 }
